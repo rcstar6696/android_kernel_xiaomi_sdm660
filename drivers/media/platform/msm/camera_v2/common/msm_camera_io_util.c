@@ -580,7 +580,10 @@ disable_vreg:
 				continue;
 		} else
 			j = i;
+
+		if (reg_ptr[j] != NULL) {
 		regulator_disable(reg_ptr[j]);
+		}
 		if (cam_vreg[j].delay > 20)
 			msleep(cam_vreg[j].delay);
 		else if (cam_vreg[j].delay)
@@ -863,4 +866,3 @@ int msm_camera_hw_write_dt_reg_settings(void __iomem *base,
 		pr_err("%s: Failed dt reg setting write\n", __func__);
 	return rc;
 }
-
