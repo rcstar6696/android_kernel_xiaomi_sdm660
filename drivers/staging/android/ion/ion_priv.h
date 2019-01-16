@@ -587,3 +587,4 @@ struct ion_handle *ion_handle_get_by_id_nolock(struct ion_client *client,
 int ion_handle_put(struct ion_handle *handle);
 
 #endif /* _ION_PRIV_H */
+
