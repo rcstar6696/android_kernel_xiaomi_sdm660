@@ -12,9 +12,9 @@ menuconfig INPUT_TOUCHSCREEN
 if INPUT_TOUCHSCREEN
 
 source "drivers/input/touchscreen/synaptics_dsx/Kconfig"
-source "drivers/input/touchscreen/synaptics_tcm/Kconfig"
-source "drivers/input/touchscreen/nvt_touch_a/Kconfig"
-source "drivers/input/touchscreen/focal_ft8719/Kconfig"
+#source "drivers/input/touchscreen/synaptics_tcm/Kconfig"
+#source "drivers/input/touchscreen/nvt_touch_a/Kconfig"
+#source "drivers/input/touchscreen/focal_ft8719/Kconfig"
 
 config OF_TOUCHSCREEN
 	def_tristate INPUT
@@ -1141,6 +1141,18 @@ config TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE_EXTRA_SYSFS
 	  If unsure, say N.
 
 config TOUCHSCREEN_NVT_D2S
+       tristate "novatek touchscreens"
+       help
+         Say Y here if you have a nvt touchscreen.
+	 nvt controllers are multi touch controllers which can
+	 report 5 touches at a time.
+
+         If unsure, say N.
+
+         To compile this driver as a module, choose M here: the
+         module will be called nvt.
+
+config TOUCHSCREEN_NVT
        tristate "novatek touchscreens"
        help
          Say Y here if you have a nvt touchscreen.

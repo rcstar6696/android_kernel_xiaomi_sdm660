@@ -73,6 +73,7 @@ obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX) += synaptics_dsx/
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_TCM) += synaptics_tcm/
 obj-$(CONFIG_TOUCHSCREEN_NVT_D2S) 	+= nvt_touch_d2s/
 obj-$(CONFIG_TOUCHSCREEN_FOCAL_FT8719)  += focal_ft8719/
+obj-$(CONFIG_TOUCHSCREEN_NVT) 	+= nvt_touch/
 obj-$(CONFIG_TOUCHSCREEN_NVT_A) 	+= nvt_touch_a/
 obj-$(CONFIG_TOUCHSCREEN_TI_AM335X_TSC)	+= ti_am335x_tsc.o
 obj-$(CONFIG_TOUCHSCREEN_TOUCHIT213)	+= touchit213.o
@@ -108,6 +109,11 @@ obj-$(CONFIG_KERNEL_CUSTOM_D2S)	+= lct_tp_fm_info.o
 obj-$(CONFIG_KERNEL_CUSTOM_D2S)	+= lct_ctp_selftest.o
 obj-$(CONFIG_KERNEL_CUSTOM_D2S)	+= lct_ctp_upgrade.o
 obj-$(CONFIG_KERNEL_CUSTOM_D2S)	+= lct_if_ctp_upgrade.o
+
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_tp_fm_info.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_ctp_selftest.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_ctp_upgrade.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_if_ctp_upgrade.o
 
 # HMI_L6662_A01
 obj-$(CONFIG_KERNEL_CUSTOM_E7T)	+= lct_tp_fm_info.o
