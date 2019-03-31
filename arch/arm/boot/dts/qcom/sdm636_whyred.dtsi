@@ -11,7 +11,7 @@
  * GNU General Public License for more details.
  */
 
-#include "sdm660_e7s.dtsi"
+#include "sdm660_whyred.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. SDM 636";

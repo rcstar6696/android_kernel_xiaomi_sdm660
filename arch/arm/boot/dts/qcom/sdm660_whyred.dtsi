@@ -303,6 +303,8 @@
 			compatible = "android,firmware";
 			fstab {
 				compatible = "android,fstab";
+        /delete-node/ vendor;
+        /delete-node/ system;
 				system {
 					compatible = "android,system";
 					dev = "/dev/block/platform/soc/c0c4000.sdhci/by-name/system";
@@ -2542,7 +2544,7 @@
 
 #include "sdm660-ion.dtsi"
 #include "sdm660-bus.dtsi"
-#include "msm-pm660_e7s.dtsi"
+#include "msm-pm660_whyred.dtsi"
 #include "msm-pm660l.dtsi"
 #include "msm-pm660-rpm-regulator.dtsi"
 #include "msm-pm660l-rpm-regulator.dtsi"
@@ -2640,7 +2642,7 @@
 
 #include "msm-arm-smmu-660.dtsi"
 #include "msm-arm-smmu-impl-defs-660.dtsi"
-#include "sdm660-common_e7s.dtsi"
+#include "sdm660-common_whyred.dtsi"
 #include "sdm660-blsp.dtsi"
 #include "msm-rdbg.dtsi"
 #include "sdm660-camera.dtsi"
