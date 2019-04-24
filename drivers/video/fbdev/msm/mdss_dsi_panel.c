@@ -31,7 +31,8 @@
 #define DEFAULT_MDP_TRANSFER_TIME 14000
 
 #define VSYNC_DELAY msecs_to_jiffies(17)
-
+#define TP_RESET_GPIO 66
+extern bool enable_gesture_mode;
 DEFINE_LED_TRIGGER(bl_led_trigger);
 
 void mdss_dsi_panel_pwm_cfg(struct mdss_dsi_ctrl_pdata *ctrl)
@@ -424,7 +425,11 @@ int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 					goto exit;
 				}
 			}
-
+			if(!enable_gesture_mode) {
+				if (gpio_direction_output(TP_RESET_GPIO, 1)) {
+					pr_err("%s: unable to set dir for touch reset gpio\n", __func__);
+				}
+			}
 			if (pdata->panel_info.rst_seq_len) {
 				rc = gpio_direction_output(ctrl_pdata->rst_gpio,
 					pdata->panel_info.rst_seq[0]);
@@ -496,7 +501,15 @@ int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 			gpio_set_value((ctrl_pdata->disp_en_gpio), 0);
 			gpio_free(ctrl_pdata->disp_en_gpio);
 		}
+		if(enable_gesture_mode) {
+			printk(KERN_ERR "[lcd][tp][gesture] keep lcd_reset and tp_reset gpio to high.\n");
+			goto keep_lcd_and_tp_reset;
+		}
+		if (gpio_direction_output(TP_RESET_GPIO, 0)) {
+			pr_err("%s: unable to set dir for touch reset gpio\n", __func__);
+		}
 		gpio_set_value((ctrl_pdata->rst_gpio), 0);
+keep_lcd_and_tp_reset:
 		gpio_free(ctrl_pdata->rst_gpio);
 		if (gpio_is_valid(ctrl_pdata->lcd_mode_sel_gpio)) {
 			gpio_set_value(ctrl_pdata->lcd_mode_sel_gpio, 0);
