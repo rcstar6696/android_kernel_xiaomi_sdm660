@@ -76,13 +76,6 @@
 
 #include <linux/types.h>
 #include <linux/compiler.h>
-#include <linux/bug.h>
-
-extern bool static_key_initialized;
-
-#define STATIC_KEY_CHECK_USE() WARN(!static_key_initialized,		      \
-				    "%s used before call to jump_label_init", \
-				    __func__)
 
 #ifdef HAVE_JUMP_LABEL
 
@@ -174,7 +167,6 @@ static inline int static_key_count(struct static_key *key)
 
 static __always_inline void jump_label_init(void)
 {
-	static_key_initialized = true;
 }
 
 static __always_inline bool static_key_false(struct static_key *key)
